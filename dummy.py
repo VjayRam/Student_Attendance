@@ -1,5 +1,6 @@
 import pymysql as sql
 
+
 def create():
     print("a.Create new database")
     print("b.Create new table")
