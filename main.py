@@ -9,13 +9,20 @@ def initialize_db():
     print('MSG: Database has been initialized successfully!')
     return db_n
 
-def init_table(db_name):
+def init_class_table(db_name):
     conn = sql.connect(host='localhost',user='root',password='root',db = db_name)
     a = conn.cursor()
-    tab_n = input('Enter Class (1-12): ')
-    if tab_n.isnumeric()==True:
-        q = 'create table class'+ tab_n +'(RegNo varchar(5) PRIMARY KEY, name varchar(25), sec varchar(2), gender varchar(2), dob date, phno int(12));'
+    cl_n = int(input('Enter Class (1-12): '))
+    if (cl_n >= 1 and cl_n <= 12):
+        q = 'create table class'+ str(cl_n) +'(sections varchar(5) PRIMARY KEY, t_count int, b_count int, g_count int, incharge varchar(25));'
         a.execute(q)
     else:
-        print('ERROR: Enter only numbers as input')
+        print('ERROR: Enter only numbers between 1 to 12 as input')
     return
+
+def init_sec_table(db_name):
+    conn = sql.connect(host='localhost',user='root',password='root',db = db_name)
+    a = conn.cursor()
+    sec_n = input('Enter Section: '),
+
+
