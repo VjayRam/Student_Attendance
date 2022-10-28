@@ -23,6 +23,6 @@ def init_class_table(db_name):
 def init_sec_table(db_name):
     conn = sql.connect(host='localhost',user='root',password='root',db = db_name)
     a = conn.cursor()
-    sec_n = input('Enter Section: '),
+    sec_n = input('Enter Section: ')
 
 
