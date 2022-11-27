@@ -1,7 +1,7 @@
 import streamlit as st
 import mysql.connector
 from database import about
-from database import create_table, add_details
+from database import create_table, add_details, view_details, edit_details
 
 def main():
     st.title("Student Attendance System")
@@ -13,9 +13,9 @@ def main():
     elif ch == "Add Details":
         add_details()
     elif ch == "View Details":
-        about()
+        view_details()
     elif ch == "Update Details":
-        about()
+        edit_details()
     elif ch == "Remove Details":
         about()
     else:
