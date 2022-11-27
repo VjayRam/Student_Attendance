@@ -106,6 +106,7 @@ def edit_details():
         if st.button("Update Details"):    
             c.execute("UPDATE Student SET Pincode=%s, Class=%s, Section=%s, Parent_ph=%s WHERE "
               "Student_ID=%s", (pin, cl, sec, ph, sid))
+            mydb.commit()
             st.success("Successfully Updated Student: {}".format(sid))
         #about()
     elif x == "Edit Teacher":
@@ -126,12 +127,35 @@ def edit_details():
         
         if st.button("Update Details"): 
             c.execute("UPDATE Teacher SET Ph_no=%s, Email=%s, Class=%s WHERE Teacher_ID=%s", (ph, email, cl, tid))
+            mydb.commit()
             st.success("Successfully Updated Teacher: {}".format(tid))
         #about()
     else:
         about()
 
-def del_delete():
+def del_details():
+    opt = ["Remove Student", "Remove Teacher"]
+    x = st.selectbox("Remove:",opt)
+
+    if x == "Remove Student":
+        st.subheader("Edit Student Details:")
+        sid = st.text_input("Enter Student ID: ")
+        st.warning("Do you want to delete ::{}".format(sid))
+        if st.button("Remove Student"):
+            c.execute('DELETE FROM Student WHERE Student_ID="{}"'.format(sid))
+            mydb.commit()
+            st.success("Student {} deleted".format(sid))
+    elif x == "Remove Teacher":
+        st.subheader("Edit Teacher Details:")
+        tid = st.text_input("Enter Teacher ID: ")
+        st.warning("Do you want to delete ::{}".format(tid))
+        if st.button("Remove Teacher"):
+            c.execute('DELETE FROM Teacher WHERE Teacher_ID="{}"'.format(tid))
+            mydb.commit()
+            st.success("Teacher {} deleted".format(tid))
+    else:
+        about()
+
+def attendance():
     
     return
-    
