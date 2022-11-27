@@ -130,4 +130,8 @@ def edit_details():
         #about()
     else:
         about()
+
+def del_delete():
+    
+    return
     
