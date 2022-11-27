@@ -28,7 +28,7 @@ def add_details():
         with col2:
             dob = st.date_input("Enter DOB: ")
             pin = st.text_input("Enter Pincode: ")
-            ph = st.number_input("Enter Phone Number: ")
+            ph = st.number_input("Enter Parent Phone Number: ")
             sec = st.radio("Choose Section: ",["A","B","C","D","E","F","G","H","I","K","L"]) 
         today = date.today()
         age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day)) 
@@ -36,7 +36,7 @@ def add_details():
         if st.button("Add Student"):
             c.execute("insert into student( Student_ID ,Fname,Lname ,Age ,DOB ,Pincode ,Class ,Section ,Parent_ph) values(%s,%s,%s,%s,%s,%s,%s,%s,%s);", (sid, fname, lname, age, dob, pin, cl, sec, ph))
             st.success("Successfully added student: {}".format(sid))
-            
+
     elif x == "Add Teacher":
         st.subheader("Enter Teacher Details:")
         col1, col2 = st.columns(2)
