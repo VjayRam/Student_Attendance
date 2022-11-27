@@ -1,20 +1,22 @@
 import streamlit as st
 import mysql.connector
 from database import about
-from database import create_table
+from database import create_table, edit_details
 
 def main():
     st.title("Student Attendance System")
-    menu = ["Take Attendance", "Update Attendance List", "View Attendance List", "Remove List","Credits"]
+    menu = ["Attendance", "Add Details", "View Details", "Update Details", "Remove Details","Credits"]
     ch = st.sidebar.selectbox("Menu",menu)
     create_table()
-    if ch == "Take Attendance":
+    if ch == "Attendance":
         about()
-    elif ch == "Update Attendance List":
+    elif ch == "Add Details":
         about()
-    elif ch == "View Attendance List":
+    elif ch == "View Details":
         about()
-    elif ch == "Remove List":
+    elif ch == "Update Details":
+        about()
+    elif ch == "Remove Details":
         about()
     else:
         about()
