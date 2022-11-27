@@ -159,5 +159,18 @@ def del_details():
 def attendance():
     menu = ["Take Attendance", "View Attendance", "Update Attendance"]
     a = st.sidebar.selectbox("Attendance:", menu)
-    
-    return
+    if a == "Take Attendance":
+        date = st.date_input("Enter Current Date:")
+        col1, col2 = st.columns(2)
+        with col1:
+            cl = st.radio("Choose Class: ",["1","2","3","4","5","6","7","8","9","10","11","12"])
+        with col2:
+            sec = st.radio("Choose Section: ",["A","B","C","D","E","F","G","H","I","K","L"]) 
+        
+        pass
+    if a == "View Attendance":
+        pass
+    if a == "Update Attendance":
+        pass
+    else:
+        about()
