@@ -14,7 +14,7 @@ def create_table():
     c.execute("CREATE TABLE IF NOT EXISTS Attendance (Student_ID varchar(10), Class int, Section varchar(5), Sub_ID varchar(10), Teacher_ID varchar(10), Class_DateTime datetime, Attendance char default 'N', foreign key(Teacher_ID) references Teacher(Teacher_ID), foreign key(Sub_ID) references Subjects(Sub_ID), foreign key(Student_ID) references Student(Student_ID));")
 
 def add_details():
-    opt = ["Add Student", "Add Teacher", "Add Subject"]
+    opt = ["Add Student", "Add Teacher"]
     x = st.selectbox("Add:",opt)
     if x == "Add Student":
         st.subheader("Enter Student Details:")
