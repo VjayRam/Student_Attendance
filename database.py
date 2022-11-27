@@ -157,5 +157,7 @@ def del_details():
         about()
 
 def attendance():
+    menu = ["Take Attendance", "View Attendance", "Update Attendance"]
+    a = st.sidebar.selectbox("Attendance:", menu)
     
     return
