@@ -161,16 +161,31 @@ def attendance():
     a = st.sidebar.selectbox("Attendance:", menu)
     if a == "Take Attendance":
         date = st.date_input("Enter Current Date:")
+        tid = st.text_input("Enter Teacher ID:")
         col1, col2 = st.columns(2)
         with col1:
             cl = st.radio("Choose Class: ",["1","2","3","4","5","6","7","8","9","10","11","12"])
         with col2:
-            sec = st.radio("Choose Section: ",["A","B","C","D","E","F","G","H","I","K","L"]) 
+            sec = st.radio("Choose Section: ",["A","B","C","D","E","F","G","H","I","K","L"])
+        if st.button("Take Attendance"): 
+            c.execute("select Teacher_ID from Teacher where Teacher_ID = '"+tid+"' and Class = '"+cl+"';")
+            d = c.fetchall()
+            t = pd.DataFrame(d, columns=["tid"])
+            if tid in t["tid"]:
+                c.execute("select Student_ID, Fname, Lmame from Student where Class = '"+cl+"' and Section = '"+sec+"';")
+                s = c.fetchall()
+                stu = pd.DataFrame(s, columns=["sid", "fname", "lname"])
+                att = "N"
+                for id in stu["sid"]:
+                    c.execute("insert into attendance(Student_ID, Class, Section, Teacher_ID, Att_date, Attendance) values (%s,%s,%s,%s,%s,%s);",(id, cl, sec, tid, date, att)) 
+                    mydb.commit()
+                for i in 
+            
+            
         
-        pass
     if a == "View Attendance":
         pass
     if a == "Update Attendance":
         pass
     else:
-        about()
+        pass
